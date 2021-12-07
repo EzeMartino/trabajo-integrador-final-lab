@@ -1,40 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>El Clima Hoy</title>
-    <script src="index.js" defer></script>
-</head>
-<body>
-    <head>
-        <nav>
+    <link rel="stylesheet" href="master.css" />
+    <script src="https://kit.fontawesome.com/eee8ba6485.js" crossorigin="anonymous" defer></script>
+    <script src="index.js" defer ></script>
+  </head>
+  <body>
+    <nav class="navbar">
+      <ul class="navbar-list">
+        <li>
+          <h1>Aplicación del clima</h1>
+        </li>
+        <li>
+          <a href="/index.html">El clima hoy</a>
+        </li>
+        <li>
+          <a href="/add-city.html">Agregar ciudad</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="container">
+        <div class="card">
+            <div class="form-group">
+                <label for="city">Seleccione una ciudad</label>
+                <select class="cities" name="city">
 
-        </nav>
-    </head>
-    <div>
-        <form action="" class="form">
-            <select name="selectClima" id="clima">
-                <option disabled selected value="0"> -- Seleccione la ciudad -- </option>
-                <option value="buenosaires">Buenos Aires</option>
-                <option value="montevideo">Montevideo</option>
-                <option value="brasilia">Brasilia</option>
-                <option value="riodejaneiro">Rio de Janeiro</option>
-                <option value="asuncion">Asunción</option>
-                <option value="lima">Lima</option>
-                <option value="bogota">Bogotá</option>
-                <option value="quito">Quito</option>
-                <option value="MexicoCity">Ciudad de Mexico</option>
-                <option value="NewYork">Nueva York</option>
-                <option value="LosAngeles">Los Ángeles</option>
-            </select>
-            <button type="button" onclick="verClima()">¿Cómo está el clima hoy?</button>
-        </form>
+                </select>
+                <button type="button" class="button" onclick="fetchWeather(this)">Consultar clima</button>
+            </div>
+            <ul class="list-group mt-3">
+              <li id="weather-humidity" class="list-group-item"></li>
+              <li id="weather-wind" class="list-group-item"></li>
+            </ul>
+          </div>
     </div>
-    <div>
-        <p id="resultado">Esto es para probar cosas del script</p>
-        <!-- Acá iría lo que muestra el clima -->
-    </div>
-</body>
+  </body>
 </html>
