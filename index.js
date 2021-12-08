@@ -69,9 +69,10 @@ async function fetchWeather(element){
         let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric&lang=es`;
         let response = await fetch(url);
         let data = await response.json();
+        let wind_speed = data.wind.speed;
         let {temp, pressure, humidity, feels_like} = data.main;
         let { description, icon} = data.weather[0];
-        createMessage({temp, pressure, humidity, feels_like, description, icon});
+        createMessage({temp, pressure, humidity, feels_like, description, icon, wind_speed});
     } catch (error) {
         showMessage(error.message, true);
     }
@@ -83,7 +84,7 @@ function ocultarDiv(){
 
 //Función que crea el mensaje a mostrar en caso de obtener una respuesta exitosa
 function createMessage(weatherObject) {
-    let {temp, pressure, humidity, feels_like, description, icon } = weatherObject;
+    let {temp, pressure, humidity, feels_like, description, icon, wind_speed } = weatherObject;
     let imgURL = `http://openweathermap.org/img/wn/${icon}@2x.png`;
     ICON_IMG.src = imgURL;
 
@@ -93,11 +94,11 @@ function createMessage(weatherObject) {
 //Función que muestra el resultado o el error dependiendo los parámetros
 function showMessage(message, error) {
     if (error === true) {
-        resultado.style.backgroundColor="red";
-        resultado.innerText = message;
+        // resultado.style.backgroundColor="red";
+        // resultado.innerText = message;
     } else {
-        resultado.style.backgroundColor="green";
-        resultado.innerText = message;
+        // resultado.style.backgroundColor="green";
+        // resultado.innerText = message;
     }
 }
 
