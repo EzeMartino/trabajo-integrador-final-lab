@@ -3,9 +3,10 @@ const API_KEY = "3936d0749fdc3124c6566ed26cf11978";
 const CITIES_SELECT = document.querySelector(".cities");
 const DIV_SELECCIONAR_CIUDAD = document.getElementsByClassName("form-group")
 
+
 //En caso de no estar creado el arreglo de ciudades en localStorage = crearlo
 if (localStorage.getItem("cities") === null) {
-    localStorage.setItem("cities", JSON.stringify([]));
+    localStorage.setItem("cities", JSON.stringify(["CORDOBA", "ROSARIO","CABA"]));
 };
 
 
