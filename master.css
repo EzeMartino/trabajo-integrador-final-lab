@@ -35,27 +35,131 @@ body {
 }
 
 .card {
-    width: 35%;
-    height: 400px;
-    background-color: #ffffff52;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 25%;
+    height: 450px;
+    background-color: rgba(255, 255, 255, 0.268);
     border: none;
     border-radius: 3px;
     margin: 10px 0;
     color: #000000;
+    box-sizing: border-box;
 }
 
-.card > ul {
-    list-style: none;
-
-}
 
 .form-group {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
+    justify-content: space-around;
+    align-items: center;
+}
+.form-group-1 {
+    height: 25%;
+}
+.form-group-2 {
+    height: 75%;
+}
+.form-group-3 {
+    height: 40%;
 }
 .form-group > #cities {
     width: 100%;
     box-sizing: border-box;
+}
+.form-group > img {
+    width: 80px;
+}
+.form-group > label {
+    font-size: .9rem;
+    color: white;
+}
+.form-group > select {
+    text-decoration: none;
+    width: 75%;
+}
+.form-group > input {
+    width: 75%;
+}
+.form-group > button {
+    width: 75%;
+    background-color: #41ABA6;
+    color: white;
+    outline: none;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+    padding: 5px;
+}
+.form-group > ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.list-group > li > p {
+    font-size: .7rem;
+    margin: 5px;
+    color: white;
+}
+
+.city-name {
+    font-size: 1.4rem;
+    margin: 0;
+    color: white;
+}
+
+.message {
+    color: white;
+    background-color: #6f0000;
+    text-align: center;
+}
+
+
+@media (max-width: 1040px) {
+    .card {
+        width: 30%;
+    }
+}
+
+@media (max-width: 900px) {
+    .card {
+        width: 35%;
+    }
+}
+
+@media (max-width: 700px) {
+    .card {
+        width: 40%;
+    }
+}
+
+@media (max-width: 600px) {
+    .card {
+        width: 50%;
+    }
+    .navbar-list > li > h1 {
+        font-size: 1.1rem;
+    }
+    .navbar-list > li > a {
+        font-size: .9rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .card {
+        width: 65%;
+    }
+    .navbar-list > li > h1 {
+        font-size: 1rem;
+    }
+    .navbar-list > li > a {
+        font-size: .8rem;
+    }
 }

@@ -3,6 +3,12 @@ const API_KEY = "3936d0749fdc3124c6566ed26cf11978";
 const CITIES_SELECT = document.querySelector(".cities");
 const MESSAGE_PARRAFO = document.querySelector(".message");
 const ICON_IMG = document.querySelector(".icon-img");
+const CITY_H2 = document.querySelector(".city-name");
+const TEMP_LI = document.querySelector("#temp");
+const HUMIDITY_LI = document.querySelector("#humidity");
+const WIND_LI = document.querySelector("#wind");
+const FEELS_LIKE_LI = document.querySelector("#feels-like");
+const PRESSURE_LI = document.querySelector("#pressure");
 
 
 
@@ -33,9 +39,10 @@ function addCityToStorage(element) {
     })
     if (!exist && city !== "") {
         cities.push(city);
+        ocultarDiv();
     } else {
         MESSAGE_PARRAFO.innerText = "La ciudad ingresada ya existe o no es válida";
-        MESSAGE_PARRAFO.style.backgroundColor = "red";
+        MESSAGE_PARRAFO.style.display = "block";
     }
     localStorage.setItem("cities", JSON.stringify(cities));
     loadOptions(cities);
@@ -69,37 +76,38 @@ async function fetchWeather(element){
         let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric&lang=es`;
         let response = await fetch(url);
         let data = await response.json();
+        let city_name = data.name;
         let wind_speed = data.wind.speed;
         let {temp, pressure, humidity, feels_like} = data.main;
         let { description, icon} = data.weather[0];
-        createMessage({temp, pressure, humidity, feels_like, description, icon, wind_speed});
+        sendMessage({city_name, temp, pressure, humidity, feels_like, description, icon, wind_speed});
     } catch (error) {
-        showMessage(error.message, true);
+        showError(error.message);
     }
 }
 
 function ocultarDiv(){
-    DIV_SELECCIONAR_CIUDAD.style.display="none"
+    MESSAGE_PARRAFO.innerText = "";
+    MESSAGE_PARRAFO.style.display = "none";
 }
 
 //Función que crea el mensaje a mostrar en caso de obtener una respuesta exitosa
-function createMessage(weatherObject) {
-    let {temp, pressure, humidity, feels_like, description, icon, wind_speed } = weatherObject;
+function sendMessage(weatherObject) {
+    let {city_name, temp, pressure, humidity, feels_like, description, icon, wind_speed } = weatherObject;
+    console.log(wind_speed);
     let imgURL = `http://openweathermap.org/img/wn/${icon}@2x.png`;
     ICON_IMG.src = imgURL;
-
-    showMessage(message, false);
+    CITY_H2.innerText = city_name;
+    TEMP_LI.innerText = `Temperatura: ${temp}°`;
+    FEELS_LIKE_LI.innerText = `Sensación térmica: ${feels_like}°`;
+    HUMIDITY_LI.innerText = `Humedad: ${humidity}%`;
+    WIND_LI.innerText = `Velocidad del viento: ${wind_speed}km/h`;
+    PRESSURE_LI.innerText = `Presión: ${pressure} P`;
 } 
 
 //Función que muestra el resultado o el error dependiendo los parámetros
-function showMessage(message, error) {
-    if (error === true) {
-        // resultado.style.backgroundColor="red";
-        // resultado.innerText = message;
-    } else {
-        // resultado.style.backgroundColor="green";
-        // resultado.innerText = message;
-    }
+function showError(message) {
+
 }
 
 
