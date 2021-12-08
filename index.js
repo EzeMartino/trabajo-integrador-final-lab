@@ -1,7 +1,7 @@
 //Definición de constantes
 const API_KEY = "3936d0749fdc3124c6566ed26cf11978";
 const CITIES_SELECT = document.querySelector(".cities");
-
+const DIV_SELECCIONAR_CIUDAD = document.getElementsByClassName("form-group")
 
 //En caso de no estar creado el arreglo de ciudades en localStorage = crearlo
 if (localStorage.getItem("cities") === null) {
@@ -61,6 +61,9 @@ async function fetchWeather(element){
     }
 }
 
+function ocultarDiv(){
+    DIV_SELECCIONAR_CIUDAD.style.display="none"
+}
 
 //Función que crea el mensaje a mostrar en caso de obtener una respuesta exitosa
 function createMessage(weatherObject) {
@@ -73,13 +76,13 @@ function createMessage(weatherObject) {
 
 //Función que muestra el resultado o el error dependiendo los parámetros
 function showMessage(message, error) {
-    // if (error === true) {
-    //     resultado.style.backgroundColor="red";
-    //     resultado.innerText = message;
-    // } else {
-    //     resultado.style.backgroundColor="green";
-    //     resultado.innerText = message;
-    // }
+    if (error === true) {
+        resultado.style.backgroundColor="red";
+        resultado.innerText = message;
+    } else {
+        resultado.style.backgroundColor="green";
+        resultado.innerText = message;
+    }
 }
 
 
