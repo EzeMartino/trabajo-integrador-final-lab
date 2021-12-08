@@ -77,10 +77,6 @@ async function fetchWeather(element){
     }
 }
 
-function ocultarDiv(){
-    DIV_SELECCIONAR_CIUDAD.style.display="none"
-}
-
 //Función que crea el mensaje a mostrar en caso de obtener una respuesta exitosa
 function createMessage(weatherObject) {
     let {temp, pressure, humidity, feels_like, description, icon } = weatherObject;
