@@ -2,6 +2,7 @@
 const API_KEY = "3936d0749fdc3124c6566ed26cf11978";
 const CITIES_SELECT = document.querySelector(".cities");
 const MESSAGE_PARRAFO = document.querySelector(".message");
+const ICON_IMG = document.querySelector(".icon-img");
 
 
 
@@ -82,7 +83,9 @@ function ocultarDiv(){
 
 //Función que crea el mensaje a mostrar en caso de obtener una respuesta exitosa
 function createMessage(weatherObject) {
-    console.log(weatherObject);
+    let {temp, pressure, humidity, feels_like, description, icon } = weatherObject;
+    let imgURL = `http://openweathermap.org/img/wn/${icon}@2x.png`;
+    ICON_IMG.src = imgURL;
 
     showMessage(message, false);
 } 

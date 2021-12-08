@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>El Clima Hoy</title>
     <link rel="stylesheet" href="master.css" />
-    <script src="https://kit.fontawesome.com/eee8ba6485.js" crossorigin="anonymous" defer></script>
     <script src="index.js" defer ></script>
   </head>
   <body>
@@ -28,18 +27,20 @@
             <div class="form-group">
                 <label for="city">Seleccione una ciudad</label>
                 <select class="cities" name="city">
-<<<<<<< HEAD
 
-=======
->>>>>>> 8947bae92c7e12547d80099af1959ff8fd382b07
                 </select>
                 <button type="button" class="button" onclick="fetchWeather(this)">Consultar clima</button>
             </div>
-            <ul class="list-group mt-3">
-              <li id="weather-humidity" class="list-group-item"></li>
-              <li id="weather-wind" class="list-group-item"></li>
-            </ul>
-            <p id="resultado"></p>
+            <div class="form-group">
+              <h2 class="city"></h2>
+              <img class="icon-img" src="" alt="">
+              <ul class="list-group mt-3">
+                <li id="humidity"></li>
+                <li id="wind"></li>
+                <li id="feels_like"></li>
+                <li id="pressure"></li>
+              </ul>
+            </div>
           </div>
     </div>
   </body>
