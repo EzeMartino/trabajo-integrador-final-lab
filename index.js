@@ -1,6 +1,7 @@
 //Definición de constantes
 const API_KEY = "3936d0749fdc3124c6566ed26cf11978";
 const CITIES_SELECT = document.querySelector(".cities");
+const MESSAGE_PARRAFO = document.querySelector(".message");
 
 
 //En caso de no estar creado el arreglo de ciudades en localStorage = crearlo
@@ -20,9 +21,20 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 //Función ejecutada cuando un usuario agrega una ciudad en la página "Agregar ciudad"
 function addCityToStorage(element) {
-    let city = element.parentElement.querySelector("#city").value;
+    let city = element.parentElement.querySelector("#city").value.toUpperCase();
     let cities = loadCitiesFromStorage();
-    cities.push(city);
+    let exist;
+    cities.forEach(ciudad => {
+        if (ciudad === city) {
+            exist = true;
+        }
+    })
+    if (!exist) {
+        cities.push(city);
+    } else {
+        MESSAGE_PARRAFO.innerText = "La ciudad ingresada ya existe";
+        MESSAGE_PARRAFO.style.backgroundColor = "red";
+    }
     localStorage.setItem("cities", JSON.stringify(cities));
     loadOptions(cities);
 }
@@ -37,7 +49,7 @@ function loadCitiesFromStorage() {
 
 //Carga un arreglo de options dentro del Select de ciudades
 function loadOptions(cities) {
-    cities.forEach(city => {
+    cities.forEach((city) => {
         CITIES_SELECT.innerHTML += `<option value="${city}">${city}</option>`;
     });
 }
@@ -50,7 +62,6 @@ async function fetchWeather(element){
     try {
         let city = element.parentElement.querySelector(".cities").value;
         let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric&lang=es`;
-        console.log(url);
         let response = await fetch(url);
         let data = await response.json();
         let {temp, pressure, humidity, feels_like} = data.main;
@@ -66,20 +77,18 @@ async function fetchWeather(element){
 function createMessage(weatherObject) {
     console.log(weatherObject);
 
-
-
     showMessage(message, false);
 } 
 
 //Función que muestra el resultado o el error dependiendo los parámetros
 function showMessage(message, error) {
-    // if (error === true) {
-    //     resultado.style.backgroundColor="red";
-    //     resultado.innerText = message;
-    // } else {
-    //     resultado.style.backgroundColor="green";
-    //     resultado.innerText = message;
-    // }
+    if (error === true) {
+        resultado.style.backgroundColor="red";
+        resultado.innerText = message;
+    } else {
+        resultado.style.backgroundColor="green";
+        resultado.innerText = message;
+    }
 }
 
 
