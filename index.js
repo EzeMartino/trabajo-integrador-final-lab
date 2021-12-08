@@ -1,12 +1,8 @@
 //Definición de constantes
 const API_KEY = "3936d0749fdc3124c6566ed26cf11978";
 const CITIES_SELECT = document.querySelector(".cities");
-<<<<<<< HEAD
 const MESSAGE_PARRAFO = document.querySelector(".message");
 
-=======
-const DIV_SELECCIONAR_CIUDAD = document.getElementsByClassName("form-group")
->>>>>>> d54c67365fc67bdf06dd5631457838c7781ca960
 
 //En caso de no estar creado el arreglo de ciudades en localStorage = crearlo
 if (localStorage.getItem("cities") === null) {
@@ -54,6 +50,9 @@ function loadCitiesFromStorage() {
 //Carga un arreglo de options dentro del Select de ciudades
 function loadOptions(cities) {
     cities.forEach((city) => {
+        firstLetter = city.substring(0,1).toUpperCase();
+        remLetters = city.substring(1).toLowerCase();
+        city = firstLetter.concat(remLetters);
         CITIES_SELECT.innerHTML += `<option value="${city}">${city}</option>`;
     });
 }
