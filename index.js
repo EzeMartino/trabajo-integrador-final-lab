@@ -86,13 +86,21 @@ function createMessage(weatherObject) {
     let {temp, pressure, humidity, feels_like, description, icon } = weatherObject;
     let imgURL = `http://openweathermap.org/img/wn/${icon}@2x.png`;
     ICON_IMG.src = imgURL;
+
     document.querySelector("h2").innerText = CITIES_SELECT.value
+
     document.getElementById("description").innerText = description
+
     document.querySelector("h3").innerText = temp + " ºC"
+
     document.getElementById("humidity").innerHTML = "Humedad: " + humidity + "%"
+
     //document.getElementById("wind").innerHTML = "Viento: " + speed + " km/h"
+
     document.getElementById("feels_like").innerHTML = "Sensación termica: " + feels_like + " ºC"
+
     document.getElementById("pressure").innerHTML = "Presion: " + pressure + " hPa"
+    
     showMessage(message, false);
 } 
 
