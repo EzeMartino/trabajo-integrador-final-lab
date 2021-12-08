@@ -4,9 +4,10 @@ const CITIES_SELECT = document.querySelector(".cities");
 const MESSAGE_PARRAFO = document.querySelector(".message");
 
 
+
 //En caso de no estar creado el arreglo de ciudades en localStorage = crearlo
 if (localStorage.getItem("cities") === null) {
-    localStorage.setItem("cities", JSON.stringify([]));
+    localStorage.setItem("cities", JSON.stringify(["CORDOBA", "ROSARIO","CABA"]));
 };
 
 
