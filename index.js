@@ -30,10 +30,10 @@ function addCityToStorage(element) {
             exist = true;
         }
     })
-    if (!exist) {
+    if (!exist && city !== "") {
         cities.push(city);
     } else {
-        MESSAGE_PARRAFO.innerText = "La ciudad ingresada ya existe";
+        MESSAGE_PARRAFO.innerText = "La ciudad ingresada ya existe o no es válida";
         MESSAGE_PARRAFO.style.backgroundColor = "red";
     }
     localStorage.setItem("cities", JSON.stringify(cities));
